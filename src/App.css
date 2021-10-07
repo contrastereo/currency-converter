@@ -1,13 +1,58 @@
-body{
+body {
   height: 100vh;
   min-height: 100%;
-  background-color: blue;
+  background: #6190e8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #a7bfe8,
+    #6190e8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: grid;
   place-items: center center;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
 }
-.App{
-  background-color: white;
+.App {
+  background-color: rgba(255, 255, 255, 0.623);
+  min-height: 50vh;
+  border-radius: 10px;
   min-width: 500px;
   width: 70vh;
-  ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+h1 {
+  font-weight: 700;
+  font-size: 3rem;
+}
+.currency__input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.currency__input__localInput {
+  border-radius: 5px 0 0 5px;
+}
+.currency__input__foreingInput {
+  border-radius: 0 5px 5px 0;
+}
+.currency__input__foreingSelect {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0 5px 5px 0;
+  height: auto;
+}
+
+input {
+  width: 30%;
+}
+select {
+  width: 3.5rem;
 }
