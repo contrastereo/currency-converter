@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import axios from "axios";
 
 const SelectInput = (props) => {
   const baseURL =
-    "https://v6.exchangerate-api.com/v6/bc16b6bf1a1ccfa42befc5ac/latest/USD";
+    "https://free.currconv.com/api/v7/currencies?apiKey=f721d2ff6d2f791cb2d2";
   const [currencies, setCurrencies] = useState([]);
   // Initiating Axios
   const getData = () => {
-    axios
+     axios
       .get(baseURL)
       .then((response) => {
-        if (response.data["conversion_rates"]) {
-          return setCurrencies(response.data["conversion_rates"]);
+        if (response.data.results) {
+          return setCurrencies(response.data.results);
         } else {
           return console.log(response);
         }
@@ -27,11 +27,11 @@ const SelectInput = (props) => {
   return (
     <select id="pet-select" class>
       <option value="">--Please choose an option--</option>
-      {/* {Object.entries(currencies).map((item) => (
+      {Object.entries(currencies).map((item) => (
         <option value={item.id} key={item.id}>
-          {item.currencyName} 
+          {item["currencyName"]} 
         </option>
-      ))}*/}
+      ))}
     </select>
   );
 };
