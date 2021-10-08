@@ -1,5 +1,4 @@
 import "./App.scss";
-import axios from "axios";
 import CurrencyInput from "./components/CurrencyInput";
 import OperationHistory from "./components/OperationHistory";
 import { CurrencyProvider } from "./context/appContext";

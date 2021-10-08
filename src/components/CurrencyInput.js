@@ -1,19 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import SelectInput from "./SelectInput";
 import { currencyContext } from "../context/appContext";
 
 const CurrencyInput = () => {
-  const { localCoin, setLocalCoin, foreingCoin, setForeingCoin } =
-    useContext(currencyContext);
-  const [fieldData, setFieldData] = useState({});
+  const { fieldData, setFieldData } = useContext(currencyContext);
 
-  const handleClick = () => {
-    console.log(localCoin);
-    console.log(foreingCoin);
-    setFieldData({ local: localCoin, foreing: foreingCoin });
-    console.log(fieldData);
-    setLocalCoin(fieldData.foreing);
-    setForeingCoin(fieldData.local);
+  const handleDynamicChange = (key) => (event) => {
+    setFieldData((prevValues) => ({
+      ...prevValues,
+      [key]: event.target.value,
+    }));
   };
 
   return (
@@ -21,21 +17,29 @@ const CurrencyInput = () => {
       <input
         className=" currency__input__localInput"
         type="text"
-        onChange={(event) => {
-          setLocalCoin(event.target.value);
-        }}
-        value={localCoin}
+        onChange={handleDynamicChange("localCoin")}
+        value={fieldData.localCoin}
       />
       <SelectInput className="currency__input__localSelect" />
 
-      <button onClick={() => handleClick()}> swap </button>
+      <button
+        onClick={() => {
+          handleDynamicChange("localCoin")({
+            target: { value: fieldData.foreingCoin },
+          });
+          handleDynamicChange("foreingCoin")({
+            target: { value: fieldData.localCoin },
+          });
+        }}
+      >
+        {" "}
+        swap{" "}
+      </button>
       <input
         className="currency__input__foreingInput"
         type="text"
-        onChange={(event) => {
-          setForeingCoin(event.target.value);
-        }}
-        value={foreingCoin}
+        onChange={handleDynamicChange("foreingCoin")}
+        value={fieldData.foreingCoin}
       />
       <SelectInput className="currency__input__foreingSelect" />
     </div>

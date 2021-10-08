@@ -3,12 +3,9 @@ import React, { createContext, useState } from "react";
 export const currencyContext = createContext();
 
 export function CurrencyProvider(props) {
-  const [localCoin, setLocalCoin] = useState("");
-  const [foreingCoin, setForeingCoin] = useState("");
+  const [fieldData, setFieldData] = useState({});
   return (
-    <currencyContext.Provider
-      value={{ localCoin, setLocalCoin, foreingCoin, setForeingCoin }}
-    >
+    <currencyContext.Provider value={{ fieldData, setFieldData }}>
       {props.children}
     </currencyContext.Provider>
   );

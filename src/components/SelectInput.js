@@ -13,26 +13,23 @@ const SelectInput = (props) => {
         if (response.data.results) {
           return setCurrencies(response.data.results);
         }
-      }).catch((error) => {
-        console.log("error", error);
       })
-    console.log(currencies)
-  }, [])
-
-
-  const renderCurrencies = (obj) => {
-    for (let cur in obj) {
-      console.log(cur)
-      return (<option value={cur.id} key={cur.id}>
-        {cur["currencyName"]}
-      </option>)
-    }
-  }
+      .catch((error) => {
+        console.log("error", error);
+      });
+  }, []);
 
   return (
-    <select id="pet-select" class="animal">
+    <select>
       <option value="">--Please choose an option--</option>
-      {renderCurrencies(currencies)}
+      {Object.keys(currencies).map((property) => (
+        <option
+          value={currencies[property]["id"]}
+          key={currencies[property]["id"]}
+        >
+          {currencies[property]["currencyName"]}
+        </option>
+      ))}
     </select>
   );
 };
