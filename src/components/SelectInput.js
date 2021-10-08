@@ -6,32 +6,32 @@ const SelectInput = (props) => {
     "https://free.currconv.com/api/v7/currencies?apiKey=f721d2ff6d2f791cb2d2";
   const [currencies, setCurrencies] = useState([]);
   // Initiating Axios
-  const getData = () => {
-     axios
-      .get(baseURL)
-      .then((response) => {
-        if (response.data.results) {
-          return setCurrencies(response.data.results);
-        } else {
-          return console.log(response);
-        }
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
-  };
-  useEffect(() => {
-    getData();
-  }, [getData]);
+useEffect(() => { 
+  axios
+    .get(baseURL)
+    .then((response) => {
+    if (response.data.results) {  
+      return setCurrencies(response.data.results);
+    }
+    }).catch((error) => {
+    console.log("error", error);
+    })
+    console.log(currencies)}, [])
+  
+
+  const renderCurrencies=(obj)=>{
+    for (let cur in obj){
+       console.log(cur)
+        return (<option value={cur.id} key={cur.id}>
+          {cur["currencyName"]} 
+        </option>)
+    }
+  } 
 
   return (
-    <select id="pet-select" class>
+    <select id="pet-select" class="animal">
       <option value="">--Please choose an option--</option>
-      {Object.entries(currencies).map((item) => (
-        <option value={item.id} key={item.id}>
-          {item["currencyName"]} 
-        </option>
-      ))}
+      {renderCurrencies(currencies)}
     </select>
   );
 };

@@ -42,13 +42,6 @@ h1 {
 .currency__input__foreingInput {
   border-radius: 0 5px 5px 0;
 }
-.currency__input__foreingSelect {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0 5px 5px 0;
-  height: auto;
-}
 
 input {
   width: 30%;
