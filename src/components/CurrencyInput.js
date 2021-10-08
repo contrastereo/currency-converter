@@ -19,7 +19,7 @@ const CurrencyInput = () => {
   return (
     <div className="currency__input">
       <input
-        className="currency__input__localInput"
+        className=" currency__input__localInput"
         type="text"
         onChange={(event) => {
           setLocalCoin(event.target.value);

@@ -1,0 +1,19 @@
+.currency__input {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+ &__localInput {
+   border-radius: 5px 0 0 5px;
+   width: 30%;
+ }
+ &__foreingInput {
+   border-radius: 0 5px 5px 0;
+   width: 30%;
+ }
+}
+
+select{
+    width: 3.5rem
+ }
+ 
