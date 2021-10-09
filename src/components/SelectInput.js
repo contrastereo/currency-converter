@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const SelectInput = (props) => {
+  const propValue= props.propValue
+  const handler= props.handler
   const baseURL =
     "https://free.currconv.com/api/v7/currencies?apiKey=f721d2ff6d2f791cb2d2";
   const [currencies, setCurrencies] = useState([]);
@@ -20,8 +22,8 @@ const SelectInput = (props) => {
   }, []);
 
   return (
-    <select>
-      <option value="">--Please choose an option--</option>
+    <select value={propValue} onChange={handler}>
+      <option >--Please choose an option--</option>
       {Object.keys(currencies).map((property) => (
         <option
           value={currencies[property]["id"]}

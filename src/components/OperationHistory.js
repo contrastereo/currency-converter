@@ -1,40 +1,23 @@
 import React from 'react'
+import { useContext } from 'react/cjs/react.development'
+import { currencyContext } from '../context/appContext'
 
 const OperationHistory = () => {
+    const {history} = useContext(currencyContext)
     return (<table>
         <thead>
             <tr>
-                <th>
-                    Value
-                </th>
-                <th>
-                    Currency
-                </th>
-                <th>
-                    Value
-                </th>
-                <th>
-                    Currency
-                </th>
+            {!history[0] ? null : Object.keys(history[0]).map(key => (<th>{key}</th>))}
             </tr>
         </thead>
         <tbody>
+            { !history[0] ? null: history.map(
+                
+                (obj)=>
+                <tr>{Object.keys(obj).map(key => <td>{obj[key]}</td>)}</tr>
+            )}
             <tr>
-                <td>
-                    0.00
-                </td>
-                <td>
-                    0.00
-                </td>
-                <td>
-                    0.00
-                </td>
-                <td>
-                    0.00
-                </td>
-                <td>
-                    0.00
-                </td>
+            
             </tr>
         </tbody>
     </table>)
