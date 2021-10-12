@@ -1,14 +1,12 @@
-@import './sass/abstracts/variables';
-@import './sass/abstracts/mixins';
+@import "./sass/abstracts/variables";
+@import "./sass/abstracts/mixins";
 
-@import './sass/base/reset';
-@import './sass/base/typography';
+@import "./sass/base/reset";
+@import "./sass/base/typography";
 
-@import './sass/layout/history';
-@import './sass/layout/input';
-@import './sass/layout/main';
+@import "./sass/layout/input";
+@import "./sass/layout/main";
+@import "./sass/layout/output";
 
-
-@import './sass/components/buttons';
-@import './sass/components/textinputs';
-
+@import "./sass/components/buttons";
+@import "./sass/components/textinputs";

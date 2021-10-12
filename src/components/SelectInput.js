@@ -3,6 +3,7 @@ import axios from "axios";
 
 const SelectInput = (props) => {
   const propValue= props.propValue
+  const propTitle = props.title
   const handler= props.handler
   const baseURL =
     "https://free.currconv.com/api/v7/currencies?apiKey=f721d2ff6d2f791cb2d2";
@@ -23,13 +24,13 @@ const SelectInput = (props) => {
 
   return (
     <select value={propValue} onChange={handler}>
-      <option >--Please choose an option--</option>
+      <option >{propTitle}</option>
       {Object.keys(currencies).map((property) => (
         <option
           value={currencies[property]["id"]}
           key={currencies[property]["id"]}
         >
-          {currencies[property]["currencyName"]}
+          {currencies[property]["id"]}
         </option>
       ))}
     </select>

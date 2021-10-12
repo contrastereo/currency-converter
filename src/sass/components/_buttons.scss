@@ -1,0 +1,17 @@
+.currency__input {
+  &__btn {
+    width: 20%;
+    background-color: none;
+    border: none;
+    margin: 0 1rem 0 1rem;
+    border-radius: 0.625rem;
+  }
+  &__submit {
+    height: 2rem;
+    background-color: $CLR--PRIMARY--100;
+    border-radius: 15px;
+    border: none;
+    font-size: 1.2rem;
+    color: $CLR--PRIMARY--200;
+  }
+}

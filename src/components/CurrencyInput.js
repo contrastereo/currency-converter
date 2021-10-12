@@ -4,7 +4,7 @@ import { currencyContext } from "../context/appContext";
 import axios from "axios";
 
 const CurrencyInput = () => {
-  const { fieldData, setFieldData, history, setHistory} = useContext(currencyContext);
+  const { fieldData, setFieldData} = useContext(currencyContext);
   
   async function onSubmit(event) {
     event.preventDefault();
@@ -18,7 +18,7 @@ const CurrencyInput = () => {
     const handleResults =(res)=>{
       setFieldData((prevValues) => ({
         ...prevValues,
-        "foreingCoin": (parseInt(fieldData.localCoin) * res),
+        "foreingCoin": ((parseInt(fieldData.localCoin) * res)).toFixed(2),
       }));
     }
     await  axios
@@ -32,7 +32,7 @@ const CurrencyInput = () => {
         .catch((error) => {
           console.log("error", error);
         });
-        setHistory(prevValues => [...prevValues, fieldData])
+        
     }
 
   const handleDynamicChange = (key) => (event) => {
@@ -50,9 +50,9 @@ const CurrencyInput = () => {
         onChange={handleDynamicChange("localCoin")}
         value={fieldData.localCoin}
       />
-      <SelectInput className="currency__input__localSelect" handler={handleDynamicChange("localCoinSelection") } propValue={fieldData.localCoinSelection}/>
-
-      <button
+      <div className=" currency__input__options">
+      <SelectInput title='From' className="currency__input__localSelect" handler={handleDynamicChange("localCoinSelection") } propValue={fieldData.localCoinSelection}/>
+      <button className="currency__input__btn"
         onClick={() => {
           handleDynamicChange("localCoin")({
             target: { value: fieldData.foreingCoin },
@@ -68,17 +68,12 @@ const CurrencyInput = () => {
           });
         }}
       >
-        {" "}
-        swap{" "}
+Swap
       </button>
-      <input
-        className="currency__input__foreingInput"
-        type="text"
-        onChange={handleDynamicChange("foreingCoin")}
-        value={fieldData.foreingCoin}
-      />
-      <SelectInput className="currency__input__foreingSelect" handler={handleDynamicChange("foreingCoinSelection")} propValue={fieldData.foreingCoinSelection}/>
-      <button type="submit"> Submit</button>
+      <SelectInput title="To" className="currency__input__foreingSelect" handler={handleDynamicChange("foreingCoinSelection")} propValue={fieldData.foreingCoinSelection}/>
+      </div>
+      
+      <button type="submit" className="currency__input__submit"> Submit</button>
 
     </form>
   );
